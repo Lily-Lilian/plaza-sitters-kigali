@@ -42,7 +42,7 @@ const Contact = () => {
               </div>
               <Button className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 rounded-xl">
                 <MessageCircle className="mr-2 w-4 h-4" />
-                +250 788 123 456
+                +250 787507249
               </Button>
               <p className="text-xs text-center text-gray-500 mt-3">
                 Click to open WhatsApp
@@ -69,7 +69,7 @@ const Contact = () => {
               </div>
               <Button className="w-full bg-orange-600 hover:bg-orange-700 text-white font-semibold py-3 rounded-xl">
                 <Phone className="mr-2 w-4 h-4" />
-                0788 123 456
+                +250 787507249
               </Button>
               <p className="text-xs text-center text-gray-500 mt-3">
                 Available 6 AM - 10 PM
@@ -112,7 +112,7 @@ const Contact = () => {
             <div>
               <h3 className="font-bold text-gray-900 mb-2">Need someone RIGHT NOW?</h3>
               <p className="text-gray-700 mb-3">
-                Call <span className="font-bold text-red-600">0788 123 456</span> and say "EMERGENCY". 
+                Call <span className="font-bold text-red-600">+250 787507249</span> and say "EMERGENCY". 
                 We keep 2 sitters on standby daily for urgent situations.
               </p>
               <p className="text-sm text-gray-600">

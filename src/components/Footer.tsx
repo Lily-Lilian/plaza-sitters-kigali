@@ -59,11 +59,11 @@ const Footer = () => {
             <div className="space-y-3">
               <a href="https://wa.me/250788123456" className="flex items-center gap-3 text-gray-300 hover:text-green-400 transition-colors group">
                 <MessageCircle className="w-5 h-5 text-gray-500 group-hover:text-green-400" />
-                <span className="text-sm">WhatsApp: 0788 123 456</span>
+                <span className="text-sm">WhatsApp: +250 787507249</span>
               </a>
               <a href="tel:+250788123456" className="flex items-center gap-3 text-gray-300 hover:text-orange-400 transition-colors group">
                 <Phone className="w-5 h-5 text-gray-500 group-hover:text-orange-400" />
-                <span className="text-sm">Call: 0788 123 456</span>
+                <span className="text-sm">Call: +250 787507249</span>
               </a>
               <div className="flex items-start gap-3 text-gray-300">
                 <Coffee className="w-5 h-5 text-gray-500 mt-0.5" />

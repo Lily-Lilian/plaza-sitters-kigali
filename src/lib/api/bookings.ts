@@ -76,8 +76,28 @@ export const bookingsApi = {
 
       if (error) throw error;
 
-      // TODO: Send WhatsApp notification to admin
-      // This would be done through a Supabase Edge Function or external API
+      // Send SMS notification to admin
+      const adminPhone = import.meta.env.VITE_ADMIN_WHATSAPP || '+250787507249';
+      const message = `New booking from ${bookingData.parent_name}!\n📅 ${bookingData.date} at ${bookingData.time}\n⏱️ Duration: ${bookingData.duration}h\n📍 ${bookingData.location}\n👶 ${bookingData.num_kids} kid(s)\n💵 RWF ${bookingData.total_price.toLocaleString()}\n${bookingData.urgency === 'emergency' ? '🚨 EMERGENCY REQUEST' : ''}`;
+      
+      // For now, log the SMS that would be sent
+      console.log('SMS Notification:', { phone: adminPhone, message });
+      
+      // Try to send via Edge Function if available
+      try {
+        if (supabase.functions) {
+          const { data: smsData, error: smsError } = await supabase.functions.invoke('send-sms', {
+            body: { phone: adminPhone, message }
+          });
+          
+          if (smsError) {
+            console.error('SMS notification failed:', smsError);
+          }
+        }
+      } catch (smsError) {
+        // Edge function not deployed yet, that's okay
+        console.log('Edge function not available, SMS logged to console');
+      }
 
       return { data, error: null };
     } catch (error) {

@@ -95,11 +95,7 @@ const TrustSafety = () => {
               <ul className="space-y-2 text-sm text-gray-600">
                 <li className="flex items-start gap-2">
                   <span className="text-green-500 mt-0.5">✓</span>
-                  <span>Local council letter (we call the office to verify)</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-green-500 mt-0.5">✓</span>
-                  <span>Police clearance (yes, the real one from Remera)</span>
+                  <span>ID card</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-green-500 mt-0.5">✓</span>
@@ -128,7 +124,7 @@ const TrustSafety = () => {
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-green-500 mt-0.5">✓</span>
-                  <span>Grace available on WhatsApp for any issues</span>
+                  <span>We stay available on WhatsApp for any issues</span>
                 </li>
               </ul>
             </div>

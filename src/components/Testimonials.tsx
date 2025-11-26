@@ -125,9 +125,6 @@ const Testimonials = () => {
                 <p className="text-sm text-gray-600">"Kitchen cleaner than when I left. Kids fed, bathed, and in bed."</p>
               </div>
             </div>
-            <div className="mt-6 text-sm text-gray-500">
-              Join our parent WhatsApp group to see more reviews: <span className="font-semibold text-orange-600">+250 788 123 456</span>
-            </div>
           </div>
         </div>
       </div>

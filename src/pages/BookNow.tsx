@@ -50,13 +50,13 @@ const BookNow = () => {
                 <a href="https://wa.me/250788123456" target="_blank" rel="noopener noreferrer">
                   <Button className="bg-green-600 hover:bg-green-700 text-white px-8 py-3">
                     <MessageCircle className="mr-2 w-5 h-5" />
-                    WhatsApp: 0788 123 456
+                    WhatsApp: +250 787507249
                   </Button>
                 </a>
                 <a href="tel:+250788123456">
                   <Button variant="outline" className="px-8 py-3">
                     <Phone className="mr-2 w-5 h-5" />
-                    Call: 0788 123 456
+                    Call: +250 787507249
                   </Button>
                 </a>
               </div>

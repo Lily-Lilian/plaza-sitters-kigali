@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import BookNow from "./pages/BookNow";
 import FirstTimeGuide from "./pages/FirstTimeGuide";
 import NotFound from "./pages/NotFound";
+import { AdminDashboard } from "./pages/AdminDashboard";
 import DemoNotice from "./components/DemoNotice";
 
 const queryClient = new QueryClient();
@@ -21,6 +22,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/book-now" element={<BookNow />} />
           <Route path="/first-time-guide" element={<FirstTimeGuide />} />
+          <Route path="/admin" element={<AdminDashboard />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

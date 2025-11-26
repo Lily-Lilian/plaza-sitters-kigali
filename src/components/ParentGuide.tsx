@@ -154,7 +154,7 @@ _______________________`;
 
                 <div className="bg-red-100 rounded-xl p-4 text-center">
                   <p className="font-bold text-red-800 text-lg mb-1">Emergency hotline</p>
-                  <p className="text-2xl font-bold text-red-600">0788 123 456</p>
+                  <p className="text-2xl font-bold text-red-600">+250 787507249</p>
                   <p className="text-sm text-red-700">Grace answers 24/7</p>
                 </div>
               </div>

@@ -28,7 +28,7 @@ const Hero = () => {
             
             <p className="text-lg text-gray-600 leading-relaxed max-w-xl">
               Whether it's a conference at the Convention Center, dinner in Kimihurura, 
-              or that wedding you can't miss — our trusted nannies come to YOUR home. 
+              or that wedding you can't miss, our trusted nannies come to YOUR home. 
               No drop-offs. No pickups. Just peace of mind.
             </p>
             
@@ -56,7 +56,7 @@ const Hero = () => {
             <div className="flex flex-col sm:flex-row gap-3 pt-2">
               <Button className="bg-orange-600 hover:bg-orange-700 text-white px-6 py-5 rounded-xl text-base font-semibold shadow-lg hover:shadow-xl transition-all duration-300 group">
                 <Phone className="mr-2 w-4 h-4" />
-                Call us: 0788 123 456
+                Call us: 0787507249
                 <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Button>
               <Button variant="outline" className="px-6 py-5 rounded-xl border-2 border-gray-300 hover:border-orange-300 hover:bg-orange-50 text-base font-semibold">

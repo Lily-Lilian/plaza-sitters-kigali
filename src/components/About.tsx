@@ -18,14 +18,13 @@ const About = () => {
             
             <div className="space-y-4 text-gray-700 text-lg">
               <p>
-                It started when I couldn't find a sitter for my daughter's graduation at 
-                UR. My neighbor said "call my niece Divine, she's great with kids."
+                It started when My sister couldn't find a sitter for her graduation.Then her neighbor said "call my niece Divine, she's great with kids."
               </p>
               <p className="font-semibold text-orange-600">
                 Divine was amazing. Other moms started calling her too.
               </p>
               <p>
-                Now we're 52 sitters strong — from university students needing school 
+                Now we're many sitters strong from university students needing school 
                 fees to experienced mamas whose kids have grown. Each one personally 
                 recommended by someone we trust.
               </p>
@@ -37,10 +36,6 @@ const About = () => {
                 <div className="flex items-start gap-3">
                   <div className="w-1.5 h-1.5 rounded-full bg-orange-500 mt-2 flex-shrink-0"></div>
                   <p className="text-sm text-gray-700">We visit their home (yes, really)</p>
-                </div>
-                <div className="flex items-start gap-3">
-                  <div className="w-1.5 h-1.5 rounded-full bg-orange-500 mt-2 flex-shrink-0"></div>
-                  <p className="text-sm text-gray-700">Local council letter + police clearance</p>
                 </div>
                 <div className="flex items-start gap-3">
                   <div className="w-1.5 h-1.5 rounded-full bg-orange-500 mt-2 flex-shrink-0"></div>
