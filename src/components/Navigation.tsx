@@ -1,15 +1,19 @@
 import { Button } from "@/components/ui/button";
 import { Heart, Menu, X } from "lucide-react";
 import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
+  const isHomePage = location.pathname === "/";
   
   const menuItems = [
     { label: "Services", href: "#services" },
     { label: "About", href: "#about" },
+    { label: "Parent Guide", href: "#parent-guide" },
     { label: "Safety", href: "#safety" },
-    { label: "Testimonials", href: "#testimonials" },
+    { label: "Reviews", href: "#testimonials" },
     { label: "Contact", href: "#contact" }
   ];
   
@@ -27,22 +31,47 @@ const Navigation = () => {
           
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
-            {menuItems.map((item) => (
-              <a 
-                key={item.label}
-                href={item.href} 
-                className="text-foreground hover:text-primary transition-colors font-medium"
-              >
-                {item.label}
-              </a>
-            ))}
+            {menuItems.map((item) => {
+              // Special handling for Parent Guide link
+              if (item.label === "Parent Guide") {
+                return (
+                  <Link
+                    key={item.label}
+                    to="/first-time-guide"
+                    className="text-foreground hover:text-primary transition-colors font-medium"
+                  >
+                    {item.label}
+                  </Link>
+                );
+              }
+              // Regular links for home page
+              return isHomePage ? (
+                <a 
+                  key={item.label}
+                  href={item.href} 
+                  className="text-foreground hover:text-primary transition-colors font-medium"
+                >
+                  {item.label}
+                </a>
+              ) : (
+                <Link
+                  key={item.label}
+                  to={`/${item.href}`}
+                  className="text-foreground hover:text-primary transition-colors font-medium"
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
           </div>
           
           {/* CTA Button */}
           <div className="hidden md:block">
-            <Button className="gradient-button">
-              Book Now
-            </Button>
+            <Link to="/book-now">
+              <Button className="gradient-button">
+                Book Now
+              </Button>
+            </Link>
           </div>
           
           {/* Mobile Menu Button */}
@@ -58,19 +87,46 @@ const Navigation = () => {
         {isMenuOpen && (
           <div className="md:hidden py-4 border-t border-border/20">
             <div className="space-y-4">
-              {menuItems.map((item) => (
-                <a 
-                  key={item.label}
-                  href={item.href} 
-                  className="block text-foreground hover:text-primary transition-colors font-medium py-2"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {item.label}
-                </a>
-              ))}
-              <Button className="gradient-button w-full mt-4">
-                Book Now
-              </Button>
+              {menuItems.map((item) => {
+                // Special handling for Parent Guide link
+                if (item.label === "Parent Guide") {
+                  return (
+                    <Link
+                      key={item.label}
+                      to="/first-time-guide"
+                      className="block text-foreground hover:text-primary transition-colors font-medium py-2"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      {item.label}
+                    </Link>
+                  );
+                }
+                // Regular links
+                return isHomePage ? (
+                  <a 
+                    key={item.label}
+                    href={item.href} 
+                    className="block text-foreground hover:text-primary transition-colors font-medium py-2"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {item.label}
+                  </a>
+                ) : (
+                  <Link
+                    key={item.label}
+                    to={`/${item.href}`}
+                    className="block text-foreground hover:text-primary transition-colors font-medium py-2"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                );
+              })}
+              <Link to="/book-now" onClick={() => setIsMenuOpen(false)}>
+                <Button className="gradient-button w-full mt-4">
+                  Book Now
+                </Button>
+              </Link>
             </div>
           </div>
         )}
