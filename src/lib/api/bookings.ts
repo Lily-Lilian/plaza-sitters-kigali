@@ -37,13 +37,13 @@ export const bookingsApi = {
     
     try {
       // First, check if parent exists or create new
-      const { data: existingParent } = await supabase
+      const { data: existingParents } = await supabase
         .from('parents')
         .select('id')
         .eq('phone', bookingData.parent_phone)
-        .single();
+        .limit(1);
 
-      let parent_id = existingParent?.id;
+      let parent_id = existingParents?.[0]?.id;
 
       if (!parent_id) {
         // Create new parent

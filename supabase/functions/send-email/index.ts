@@ -52,7 +52,7 @@ serve(async (req) => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        from: 'KigaliCare <noreply@kigalicare.com>',
+        from: 'KigaliCare <onboarding@resend.dev>',
         to: [to],
         subject,
         html,

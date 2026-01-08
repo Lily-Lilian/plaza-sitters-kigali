@@ -1,5 +1,12 @@
 import { supabase } from '../supabase';
 import { format } from 'date-fns';
+import emailjs from '@emailjs/browser';
+
+// EmailJS configuration - get these from https://emailjs.com
+const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID || '';
+const EMAILJS_TEMPLATE_ID_CONFIRM = import.meta.env.VITE_EMAILJS_TEMPLATE_ID_CONFIRM || '';
+const EMAILJS_TEMPLATE_ID_CANCEL = import.meta.env.VITE_EMAILJS_TEMPLATE_ID_CANCEL || '';
+const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || '';
 
 interface BookingDetails {
   id: string;
@@ -15,6 +22,32 @@ interface BookingDetails {
   urgency: string;
   status: string;
   special_notes?: string;
+}
+
+// Send email using EmailJS (no CORS issues)
+async function sendEmailWithEmailJS(
+  templateId: string,
+  templateParams: Record<string, string>
+): Promise<{ success: boolean; error?: string }> {
+  if (!EMAILJS_SERVICE_ID || !EMAILJS_PUBLIC_KEY || !templateId) {
+    console.log('EmailJS not configured. Would send email with params:', templateParams);
+    return { success: false, error: 'EmailJS not configured' };
+  }
+
+  try {
+    const response = await emailjs.send(
+      EMAILJS_SERVICE_ID,
+      templateId,
+      templateParams,
+      EMAILJS_PUBLIC_KEY
+    );
+
+    console.log('Email sent successfully:', response);
+    return { success: true };
+  } catch (error: any) {
+    console.error('Error sending email:', error);
+    return { success: false, error: error.text || error.message };
+  }
 }
 
 export const notificationsApi = {
@@ -150,18 +183,25 @@ export const notificationsApi = {
     if (booking.parent_email) {
       try {
         console.log('Sending confirmation email to:', booking.parent_email);
-        if (supabase && supabase.functions) {
-          const { data, error } = await supabase.functions.invoke('send-email', {
-            body: { 
-              to: booking.parent_email,
-              subject: `Booking Confirmed - ${formattedDate}`,
-              html: emailHtml,
-              text: emailText
-            }
-          });
-          
-          if (error) throw error;
+        const emailResult = await sendEmailWithEmailJS(
+          EMAILJS_TEMPLATE_ID_CONFIRM,
+          {
+            to_email: booking.parent_email,
+            to_name: booking.parent_name,
+            booking_date: formattedDate,
+            booking_time: booking.time,
+            duration: `${booking.duration} hours`,
+            location: booking.location,
+            num_kids: `${booking.num_kids}`,
+            total_price: `RWF ${booking.total_price.toLocaleString()}`,
+            special_notes: booking.special_notes || 'None',
+          }
+        );
+
+        if (emailResult.success) {
           results.email.success = true;
+        } else {
+          results.email.error = emailResult.error;
         }
       } catch (error) {
         console.error('Email notification error:', error);
@@ -175,8 +215,8 @@ export const notificationsApi = {
   // Send cancellation notifications
   async sendBookingCancellation(booking: BookingDetails) {
     const formattedDate = format(new Date(booking.date), 'EEEE, MMMM d, yyyy');
-    
-    const smsMessage = `❌ Booking Cancelled\n\n` +
+
+    const smsMessage = `Booking Cancelled\n\n` +
       `Dear ${booking.parent_name},\n` +
       `Your booking for ${formattedDate} at ${booking.time} has been cancelled.\n\n` +
       `If you have any questions, please contact us at +250787507249.`;
@@ -186,19 +226,98 @@ export const notificationsApi = {
       email: { success: false, error: null as any }
     };
 
+    // Email HTML for cancellation
+    const emailHtml = `
+      <!DOCTYPE html>
+      <html>
+        <head>
+          <style>
+            body { font-family: Arial, sans-serif; color: #333; line-height: 1.6; }
+            .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+            .header { background: #ef4444; color: white; padding: 30px; text-align: center; border-radius: 10px 10px 0 0; }
+            .content { background: #f9fafb; padding: 30px; border-radius: 0 0 10px 10px; }
+            .booking-details { background: white; padding: 20px; border-radius: 8px; margin: 20px 0; }
+            .footer { text-align: center; margin-top: 30px; color: #6b7280; font-size: 14px; }
+          </style>
+        </head>
+        <body>
+          <div class="container">
+            <div class="header">
+              <h1>Booking Cancelled</h1>
+            </div>
+            <div class="content">
+              <p>Dear ${booking.parent_name},</p>
+              <p>We're sorry to inform you that your babysitting booking has been cancelled.</p>
+
+              <div class="booking-details">
+                <h2 style="color: #1f2937; margin-bottom: 20px;">Cancelled Booking Details</h2>
+                <p><strong>Date:</strong> ${formattedDate}</p>
+                <p><strong>Time:</strong> ${booking.time} (${booking.duration} hours)</p>
+                <p><strong>Location:</strong> ${booking.location}</p>
+              </div>
+
+              <p>If you have any questions or would like to book again, please don't hesitate to contact us.</p>
+              <p>We hope to serve you again soon!</p>
+            </div>
+            <div class="footer">
+              <p>KigaliCare - Quality Childcare in Kigali</p>
+              <p>info@kigalicare.com | +250787507249</p>
+            </div>
+          </div>
+        </body>
+      </html>
+    `;
+
+    const emailText = `Booking Cancelled\n\n` +
+      `Dear ${booking.parent_name},\n\n` +
+      `We're sorry to inform you that your babysitting booking has been cancelled.\n\n` +
+      `Cancelled Booking Details:\n` +
+      `Date: ${formattedDate}\n` +
+      `Time: ${booking.time} (${booking.duration} hours)\n` +
+      `Location: ${booking.location}\n\n` +
+      `If you have any questions, please contact us at +250787507249.\n\n` +
+      `KigaliCare`;
+
     // Send SMS
     try {
       if (supabase && supabase.functions) {
         const { data, error } = await supabase.functions.invoke('send-sms', {
           body: { phone: booking.parent_phone, message: smsMessage }
         });
-        
+
         if (error) throw error;
         results.sms.success = true;
       }
     } catch (error) {
       console.error('SMS cancellation error:', error);
       results.sms.error = error;
+    }
+
+    // Send Email (if email address is provided)
+    if (booking.parent_email) {
+      try {
+        console.log('Sending cancellation email to:', booking.parent_email);
+        const emailResult = await sendEmailWithEmailJS(
+          EMAILJS_TEMPLATE_ID_CANCEL,
+          {
+            to_email: booking.parent_email,
+            to_name: booking.parent_name,
+            booking_date: formattedDate,
+            booking_time: booking.time,
+            duration: `${booking.duration} hours`,
+            location: booking.location,
+          }
+        );
+
+        if (emailResult.success) {
+          results.email.success = true;
+        } else {
+          results.email.error = emailResult.error;
+        }
+      } catch (error) {
+        console.error('Email cancellation error:', error);
+        results.email.error = error;
+      }
     }
 
     return results;
