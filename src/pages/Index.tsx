@@ -1,11 +1,14 @@
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
-import Services from "@/components/Services";
-import About from "@/components/About";
-import TrustSafety from "@/components/TrustSafety";
+import TrustBadges from "@/components/TrustBadges";
+import HowItWorks from "@/components/HowItWorks";
+import Pricing from "@/components/Pricing";
+import Sitters from "@/components/Sitters";
 import Testimonials from "@/components/Testimonials";
-import Contact from "@/components/Contact";
+import FAQ from "@/components/FAQ";
+import BookCTA from "@/components/BookCTA";
 import Footer from "@/components/Footer";
+import StickyWhatsApp from "@/components/StickyWhatsApp";
 
 const Index = () => {
   return (
@@ -13,13 +16,16 @@ const Index = () => {
       <Navigation />
       <main>
         <Hero />
-        <Services />
-        <About />
-        <TrustSafety />
+        <TrustBadges />
+        <HowItWorks />
+        <Pricing />
+        <Sitters />
         <Testimonials />
-        <Contact />
+        <FAQ />
+        <BookCTA />
       </main>
       <Footer />
+      <StickyWhatsApp />
     </div>
   );
 };

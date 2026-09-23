@@ -14,8 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        'display': ['Playfair Display', 'serif'],
-        'body': ['Inter', 'system-ui', 'sans-serif'],
+        'display': ['Fredoka', 'Nunito', 'sans-serif'],
+        'body': ['Nunito', 'system-ui', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -54,6 +54,10 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        cocoa: "#4A2E2B",
+        gold: "#B8914F",
+        blush: "#F6D5D8",
+        cream: "#FBF6F2",
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
