@@ -37,7 +37,7 @@ export const notificationsApi = {
       `📍 ${booking.location}\n` +
       `👶 ${booking.num_kids} kid(s)\n` +
       `💵 RWF ${booking.total_price.toLocaleString()}\n\n` +
-      `A sitter will be assigned soon. Thank you for choosing KigaliCare!`;
+      `A sitter will be assigned soon. Thank you for choosing Kigali Little Angels!`;
 
     // Email HTML
     const emailHtml = `
@@ -105,12 +105,12 @@ export const notificationsApi = {
               <p>If you need to make any changes, please contact us at +250787507249.</p>
               
               <div style="text-align: center;">
-                <a href="https://kigalicare.com" class="button">Visit KigaliCare</a>
+                <a href="https://wa.me/250787507249" class="button">Message us on WhatsApp</a>
               </div>
             </div>
             <div class="footer">
-              <p>Thank you for trusting KigaliCare with your childcare needs!</p>
-              <p>📧 info@kigalicare.com | 📱 +250787507249</p>
+              <p>Thank you for trusting Kigali Little Angels with your childcare needs!</p>
+              <p>WhatsApp or call: 0787 507 249</p>
             </div>
           </div>
         </body>
@@ -128,7 +128,7 @@ export const notificationsApi = {
       `Total: RWF ${booking.total_price.toLocaleString()}\n` +
       `${booking.special_notes ? `Notes: ${booking.special_notes}\n` : ''}\n` +
       `We'll assign a qualified sitter and send you their details soon.\n\n` +
-      `Thank you for choosing KigaliCare!`;
+      `Thank you for choosing Kigali Little Angels!`;
 
     // Send SMS
     try {

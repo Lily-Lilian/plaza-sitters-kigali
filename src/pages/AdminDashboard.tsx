@@ -226,7 +226,7 @@ export function AdminDashboard() {
               </div>
             </div>
             <CardTitle className="text-2xl font-display">Admin Login</CardTitle>
-            <p className="text-muted-foreground">Welcome to KigaliCare Admin Dashboard</p>
+            <p className="text-muted-foreground">Welcome to Kigali Little Angels Admin Dashboard</p>
           </CardHeader>
           <CardContent>
             <form onSubmit={handleLogin} className="space-y-4">
@@ -286,7 +286,7 @@ export function AdminDashboard() {
                 <Heart className="w-7 h-7 text-white fill-current" />
               </div>
               <div>
-                <h1 className="text-2xl font-bold text-primary font-display">KigaliCare Admin</h1>
+                <h1 className="text-2xl font-bold text-primary font-display">Kigali Little Angels Admin</h1>
                 <p className="text-sm text-muted-foreground">Manage bookings and sitters</p>
               </div>
             </div>

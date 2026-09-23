@@ -52,7 +52,8 @@ serve(async (req) => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        from: 'KigaliCare <noreply@kigalicare.com>',
+        // TODO: replace the address with one on a domain you have verified in Resend.
+        from: 'Kigali Little Angels <noreply@kigalicare.com>',
         to: [to],
         subject,
         html,

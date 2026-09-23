@@ -1,4 +1,4 @@
--- Create tables for Plaza Sitters Kigali
+-- Create tables for Kigali Little Angels
 
 -- Parents table
 CREATE TABLE parents (
