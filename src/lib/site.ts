@@ -113,7 +113,7 @@ export const MORE_SERVICES: Package[] = [
     id: "travel",
     name: "Travel & Tour",
     price: 50000,
-    when: "Price for the whole trip · you cover the sitter's transport, meals & room",
+    when: "Trips up to 2 days · you cover the sitter's transport, meals & room · longer trips: let's talk",
     tagline: "A babysitter who travels with you",
     nominalHours: 10,
   },
