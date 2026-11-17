@@ -23,7 +23,7 @@ const Sitters = () => {
                 <h3 className="text-xl font-bold text-ink">
                   {s.name} <span className="text-base font-normal text-muted-foreground">· {s.ageRange}</span>
                 </h3>
-                <p className="text-sm text-muted-foreground italic mt-1 mb-3">"{s.quote}"</p>
+                <p className="text-sm text-muted-foreground mt-1 mb-3">{s.about}</p>
                 <ul className="space-y-1.5 text-sm">
                   <li className="flex gap-2">
                     <Clock className="w-4 h-4 text-coral mt-0.5 flex-shrink-0" />

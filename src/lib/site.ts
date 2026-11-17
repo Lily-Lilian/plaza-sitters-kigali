@@ -140,8 +140,8 @@ export type Sitter = {
   languages: string[];
   experience: string;
   goodWith?: string;
-  // Their own answer to "What makes a good babysitter?" from the application form.
-  quote: string;
+  // Short description for parents. Keep it to real facts about the sitter.
+  about: string;
 };
 
 // Real team members (first names only). Four are shown; the rest of the team
@@ -152,14 +152,16 @@ export const SITTERS: Sitter[] = [
     ageRange: "30s",
     languages: ["Kinyarwanda", "English"],
     experience: "Former nanny",
-    quote: "Safety, active engagement, clear communication and patience.",
+    about:
+      "A former nanny who keeps children busy with play and keeps them safe. She communicates clearly in English and Kinyarwanda, so you always know how your child's day went.",
   },
   {
     name: "Odette",
     ageRange: "30s",
     languages: ["Kinyarwanda", "English"],
     experience: "Mother of 2",
-    quote: "Children need someone who will make them feel safe, loved and comfortable.",
+    about:
+      "A mother of two who knows family life from the inside, from mealtimes to nap time. Kind and respectful, she follows your routine and your house rules.",
   },
   {
     name: "Honoré",
@@ -167,13 +169,15 @@ export const SITTERS: Sitter[] = [
     languages: ["Kinyarwanda", "English", "French"],
     experience: "Childcare at a church and the British Council",
     goodWith: "Best with older children",
-    quote: "A kind heart, a joyful nature and a passion for kids.",
+    about:
+      "Has looked after children at church and at the British Council. Great with school-age kids for homework, games and evening care, and explains things clearly to children and parents.",
   },
   {
     name: "Ritha",
     ageRange: "20s",
     languages: ["Kinyarwanda", "English", "Swahili"],
     experience: "Has cared for children in her family",
-    quote: "Patient, caring, trustworthy and safety-conscious.",
+    about:
+      "Has cared for the children in her own family. Patient and safety-minded, and speaks Kinyarwanda, English and Swahili with the kids.",
   },
 ];
