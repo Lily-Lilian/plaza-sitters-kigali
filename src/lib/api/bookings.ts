@@ -31,7 +31,7 @@ export const bookingsApi = {
       const mockBooking = demoBooking(bookingData);
       
       // Show demo notification
-      alert(`Demo Mode: Booking created!\n\nIn production, this would:\n- Save to database\n- Send WhatsApp to Grace\n- Match with available sitters\n\nBooking ID: ${mockBooking.id}`);
+      alert(`Demo Mode: Booking created!\n\nIn production, this would:\n- Save to database\n- Send WhatsApp to our team\n- Match with available sitters\n\nBooking ID: ${mockBooking.id}`);
       
       return { data: mockBooking, error: null };
     }

@@ -5,7 +5,6 @@ export const BRAND = {
   name: "Kigali Little Angels",
   legalName: "Kigali Little Angels Ltd",
   tagline: "Trusted care, brighter tomorrows",
-  founder: "Grace",
 };
 
 // Phone calls

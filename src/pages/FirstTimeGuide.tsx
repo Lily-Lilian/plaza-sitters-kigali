@@ -4,7 +4,7 @@ import StickyWhatsApp from "@/components/StickyWhatsApp";
 import { Button } from "@/components/ui/button";
 import { AlertTriangle, CheckCircle2, FileText } from "lucide-react";
 import { Link } from "react-router-dom";
-import { BRAND, PHONE, telLink, whatsappLink } from "@/lib/site";
+import { PHONE, telLink, whatsappLink } from "@/lib/site";
 
 const beforeList = [
   "Write down your number, a backup contact and your child's doctor",
@@ -141,7 +141,7 @@ const FirstTimeGuide = () => {
               </Link>
               <a href={whatsappLink("Hi, I'm a first-time parent and have some questions")} target="_blank" rel="noopener noreferrer">
                 <Button variant="outline" className="w-full sm:w-auto px-7 py-6 rounded-full border-2 text-base font-bold bg-white">
-                  Chat with {BRAND.founder} first
+                  Chat with us first
                 </Button>
               </a>
             </div>
