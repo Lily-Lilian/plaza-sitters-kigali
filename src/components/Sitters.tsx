@@ -23,7 +23,7 @@ const Sitters = () => {
                 <h3 className="text-xl font-bold text-ink">
                   {s.name} <span className="text-base font-normal text-muted-foreground">· {s.ageRange}</span>
                 </h3>
-                <p className="text-sm text-muted-foreground mt-1 mb-3">{s.note}</p>
+                <p className="text-sm text-muted-foreground italic mt-1 mb-3">"{s.quote}"</p>
                 <ul className="space-y-1.5 text-sm">
                   <li className="flex gap-2">
                     <Clock className="w-4 h-4 text-coral mt-0.5 flex-shrink-0" />
@@ -33,15 +33,20 @@ const Sitters = () => {
                     <Languages className="w-4 h-4 text-coral mt-0.5 flex-shrink-0" />
                     {s.languages.join(", ")}
                   </li>
-                  <li className="flex gap-2">
-                    <Baby className="w-4 h-4 text-coral mt-0.5 flex-shrink-0" />
-                    {s.babies ? "Cares for babies under 1" : "Ages 3 and up"}
-                  </li>
+                  {s.goodWith && (
+                    <li className="flex gap-2">
+                      <Baby className="w-4 h-4 text-coral mt-0.5 flex-shrink-0" />
+                      {s.goodWith}
+                    </li>
+                  )}
                 </ul>
               </div>
             </article>
           ))}
         </div>
+        <p className="text-center text-muted-foreground mt-8">
+          Plus more caring sitters on our team. We match you with the one who fits your family.
+        </p>
       </div>
     </section>
   );

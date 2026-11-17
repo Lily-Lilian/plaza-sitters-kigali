@@ -135,47 +135,45 @@ export const EXTRAS = [
 
 export type Sitter = {
   name: string;
-  photo?: string; // put real photos in /public/sitters/ and set e.g. "/sitters/divine.jpg"
+  photo?: string; // put real photos in /public/sitters/ and set e.g. "/sitters/liliane.jpg"
   ageRange: string;
   languages: string[];
   experience: string;
-  babies: boolean;
-  note: string;
+  goodWith?: string;
+  // Their own answer to "What makes a good babysitter?" from the application form.
+  quote: string;
 };
 
-// TODO before launch: replace every field below with each sitter's real details
-// and a real photo, with their permission.
+// Real team members (first names only). Four are shown; the rest of the team
+// is mentioned as "more sitters" under the cards.
 export const SITTERS: Sitter[] = [
   {
-    name: "Divine",
+    name: "Liliane",
+    ageRange: "30s",
+    languages: ["Kinyarwanda", "English"],
+    experience: "Former nanny",
+    quote: "Safety, active engagement, clear communication and patience.",
+  },
+  {
+    name: "Odette",
+    ageRange: "30s",
+    languages: ["Kinyarwanda", "English"],
+    experience: "Mother of 2",
+    quote: "Children need someone who will make them feel safe, loved and comfortable.",
+  },
+  {
+    name: "Honoré",
     ageRange: "20s",
     languages: ["Kinyarwanda", "English", "French"],
-    experience: "4 years",
-    babies: true,
-    note: "Great with homework help and bedtime routines.",
+    experience: "Childcare at a church and the British Council",
+    goodWith: "Best with older children",
+    quote: "A kind heart, a joyful nature and a passion for kids.",
   },
   {
-    name: "Esperance",
-    ageRange: "40s",
-    languages: ["Kinyarwanda", "English"],
-    experience: "Mother of 4, 10+ years",
-    babies: true,
-    note: "Calm and patient with newborns and toddlers.",
-  },
-  {
-    name: "Sarah",
+    name: "Ritha",
     ageRange: "20s",
-    languages: ["Kinyarwanda", "English"],
-    experience: "3 years",
-    babies: false,
-    note: "Loves arts, crafts and outdoor play with ages 3–10.",
-  },
-  {
-    name: "Jeanne",
-    ageRange: "30s",
-    languages: ["Kinyarwanda", "French"],
-    experience: "6 years",
-    babies: true,
-    note: "Long-term sitter for several Kigali families.",
+    languages: ["Kinyarwanda", "English", "Swahili"],
+    experience: "Has cared for children in her family",
+    quote: "Patient, caring, trustworthy and safety-conscious.",
   },
 ];

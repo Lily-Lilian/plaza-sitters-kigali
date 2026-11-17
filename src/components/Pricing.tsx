@@ -166,7 +166,7 @@ const Pricing = () => {
               </li>
               <li>
                 If your sitter can't make it, we send a replacement who has passed the same checks,
-                and tell you before she arrives.
+                and tell you before they arrive.
               </li>
               <li>Not the right fit? Your next booking is with a different sitter, no extra cost.</li>
             </ul>
