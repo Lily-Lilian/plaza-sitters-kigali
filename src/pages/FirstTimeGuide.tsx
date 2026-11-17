@@ -69,7 +69,7 @@ const FirstTimeGuide = () => {
       <Navigation />
       <main className="pt-24 pb-16 bg-gradient-to-b from-secondary to-background">
         <div className="container mx-auto px-4 sm:px-6 max-w-3xl">
-          <h1 className="text-3xl md:text-4xl font-bold text-cocoa text-center mb-2">
+          <h1 className="text-3xl md:text-4xl font-bold text-ink text-center mb-2">
             First time leaving your baby?
           </h1>
           <p className="text-center text-muted-foreground mb-10">
@@ -77,7 +77,7 @@ const FirstTimeGuide = () => {
           </p>
 
           <section className="bg-white rounded-2xl border border-border p-6 mb-6">
-            <h2 className="text-xl font-bold text-cocoa mb-4">1. Before the sitter arrives</h2>
+            <h2 className="text-xl font-bold text-ink mb-4">1. Before the sitter arrives</h2>
             <ul className="space-y-2 mb-5">
               {beforeList.map((t) => (
                 <li key={t} className="flex gap-2">
@@ -93,7 +93,7 @@ const FirstTimeGuide = () => {
           </section>
 
           <section className="bg-white rounded-2xl border border-border p-6 mb-6">
-            <h2 className="text-xl font-bold text-cocoa mb-4">2. When the sitter arrives</h2>
+            <h2 className="text-xl font-bold text-ink mb-4">2. When the sitter arrives</h2>
             <ol className="space-y-2">
               {arrivalSteps.map((t, i) => (
                 <li key={t} className="flex gap-3">
@@ -105,16 +105,16 @@ const FirstTimeGuide = () => {
           </section>
 
           <section className="bg-white rounded-2xl border border-border p-6 mb-10">
-            <h2 className="text-xl font-bold text-cocoa mb-4">3. While you're out</h2>
+            <h2 className="text-xl font-bold text-ink mb-4">3. While you're out</h2>
             <div className="grid sm:grid-cols-2 gap-6">
               <div>
-                <p className="font-semibold text-cocoa mb-2">Normal, don't worry</p>
+                <p className="font-semibold text-ink mb-2">Normal, don't worry</p>
                 <ul className="space-y-2 text-muted-foreground">
                   {normal.map((t) => <li key={t}>{t}</li>)}
                 </ul>
               </div>
               <div>
-                <p className="font-semibold text-cocoa mb-2 flex items-center gap-2">
+                <p className="font-semibold text-ink mb-2 flex items-center gap-2">
                   <AlertTriangle className="w-4 h-4 text-primary" />
                   Call us straight away if
                 </p>

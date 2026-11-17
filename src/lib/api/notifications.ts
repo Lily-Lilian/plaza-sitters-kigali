@@ -1,5 +1,6 @@
 import { supabase } from '../supabase';
 import { format } from 'date-fns';
+import { PHONE, WHATSAPP } from '../site';
 
 interface BookingDetails {
   id: string;
@@ -102,15 +103,15 @@ export const notificationsApi = {
                 <li>The sitter will arrive 10 minutes early</li>
               </ul>
               
-              <p>If you need to make any changes, please contact us at +250787507249.</p>
+              <p>If you need to make any changes, please call us at ${PHONE.display} or WhatsApp ${WHATSAPP.display}.</p>
               
               <div style="text-align: center;">
-                <a href="https://wa.me/250787507249" class="button">Message us on WhatsApp</a>
+                <a href="https://wa.me/${WHATSAPP.waNumber}" class="button">Message us on WhatsApp</a>
               </div>
             </div>
             <div class="footer">
               <p>Thank you for trusting Kigali Little Angels with your childcare needs!</p>
-              <p>WhatsApp or call: 0787 507 249</p>
+              <p>Call: ${PHONE.display} · WhatsApp: ${WHATSAPP.display}</p>
             </div>
           </div>
         </body>
@@ -179,7 +180,7 @@ export const notificationsApi = {
     const smsMessage = `❌ Booking Cancelled\n\n` +
       `Dear ${booking.parent_name},\n` +
       `Your booking for ${formattedDate} at ${booking.time} has been cancelled.\n\n` +
-      `If you have any questions, please contact us at +250787507249.`;
+      `If you have any questions, please call us at ${PHONE.display} or WhatsApp ${WHATSAPP.display}.`;
 
     const results = {
       sms: { success: false, error: null as any },

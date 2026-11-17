@@ -1,5 +1,6 @@
 import { supabase } from '../supabase';
 import type { Booking } from '../supabase';
+import { WHATSAPP } from '../site';
 
 // Demo mode handler when Supabase is not configured
 const demoBooking = (bookingData: any): Booking => ({
@@ -77,7 +78,7 @@ export const bookingsApi = {
       if (error) throw error;
 
       // Send SMS notification to admin
-      const adminPhone = import.meta.env.VITE_ADMIN_WHATSAPP || '+250787507249';
+      const adminPhone = import.meta.env.VITE_ADMIN_WHATSAPP || WHATSAPP.international;
       const message = `New booking from ${bookingData.parent_name}!\n📅 ${bookingData.date} at ${bookingData.time}\n⏱️ Duration: ${bookingData.duration}h\n📍 ${bookingData.location}\n👶 ${bookingData.num_kids} kid(s)\n💵 RWF ${bookingData.total_price.toLocaleString()}\n${bookingData.urgency === 'emergency' ? '🚨 EMERGENCY REQUEST' : ''}`;
       
       // For now, log the SMS that would be sent

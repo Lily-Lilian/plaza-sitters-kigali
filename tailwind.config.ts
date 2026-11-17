@@ -54,10 +54,13 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        cocoa: "#4A2E2B",
-        gold: "#B8914F",
-        blush: "#F6D5D8",
-        cream: "#FBF6F2",
+        // Brand colours from the Kigali Little Angels Ltd logo
+        ink: "#0B2F3F",
+        teal: "#35A3B8",
+        sunshine: "#F5C518",
+        coral: "#F27542",
+        leaf: "#4A9450",
+        sky: "#EEF8FA",
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",

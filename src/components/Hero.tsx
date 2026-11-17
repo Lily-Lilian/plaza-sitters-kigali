@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { MessageCircle, Phone } from "lucide-react";
-import logo from "@/assets/logo-md.png";
+import logo from "@/assets/logo-full.png";
 import { BRAND, PHONE, RATES, telLink, whatsappLink } from "@/lib/site";
 
 const Hero = () => {
@@ -12,10 +12,10 @@ const Hero = () => {
             <img
               src={logo}
               alt={`${BRAND.name} logo`}
-              className="w-40 h-40 mx-auto lg:hidden rounded-full shadow-lg"
+              className="w-48 h-auto mx-auto lg:hidden"
             />
 
-            <h1 className="text-4xl sm:text-5xl xl:text-6xl font-bold leading-[1.1] text-cocoa">
+            <h1 className="text-4xl sm:text-5xl xl:text-6xl font-bold leading-[1.1] text-ink">
               Got a wedding?
               <span className="block text-primary mt-2">We'll watch the kids at home.</span>
             </h1>
@@ -36,7 +36,7 @@ const Hero = () => {
               <a href={telLink}>
                 <Button
                   variant="outline"
-                  className="w-full sm:w-auto px-7 py-6 rounded-full border-2 border-cocoa/20 text-base font-bold text-cocoa"
+                  className="w-full sm:w-auto px-7 py-6 rounded-full border-2 border-ink/20 text-base font-bold text-ink"
                 >
                   <Phone className="mr-2 w-5 h-5" />
                   Call {PHONE.display}
@@ -45,7 +45,7 @@ const Hero = () => {
             </div>
 
             <p className="text-sm text-muted-foreground">
-              From <span className="font-bold text-cocoa">{RATES.day.price}</span> · Meet your
+              From <span className="font-bold text-ink">{RATES.day.price}</span> · Meet your
               sitter first for 5,000 RWF
             </p>
           </div>
@@ -54,7 +54,7 @@ const Hero = () => {
             <img
               src={logo}
               alt={`${BRAND.name} logo`}
-              className="w-[420px] h-[420px] rounded-full shadow-2xl"
+              className="w-[420px] h-auto drop-shadow-xl"
             />
           </div>
         </div>

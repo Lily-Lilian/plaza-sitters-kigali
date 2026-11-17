@@ -3,14 +3,22 @@
 
 export const BRAND = {
   name: "Kigali Little Angels",
+  legalName: "Kigali Little Angels Ltd",
   tagline: "Trusted care, brighter tomorrows",
   founder: "Grace",
 };
 
+// Phone calls
 export const PHONE = {
-  display: "0787 507 249",
-  international: "+250787507249",
-  whatsapp: "250787507249",
+  display: "0796 854 668",
+  international: "+250796854668",
+};
+
+// WhatsApp (a different number from the phone line)
+export const WHATSAPP = {
+  display: "0739 907 957",
+  international: "+250739907957",
+  waNumber: "250739907957",
 };
 
 // Hours are stated once, here. Evening sittings may run past these hours;
@@ -18,7 +26,7 @@ export const PHONE = {
 export const HOURS = "Every day, 6 AM – 10 PM";
 
 export const whatsappLink = (message = "Hi! I'd like to book a sitter.") =>
-  `https://wa.me/${PHONE.whatsapp}?text=${encodeURIComponent(message)}`;
+  `https://wa.me/${WHATSAPP.waNumber}?text=${encodeURIComponent(message)}`;
 
 export const telLink = `tel:${PHONE.international}`;
 

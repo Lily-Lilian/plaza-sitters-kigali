@@ -18,7 +18,7 @@ const todayLocal = () => {
 
 const inputClass =
   "w-full px-4 py-3 rounded-xl border-2 border-border bg-white focus:border-primary focus:outline-none";
-const labelClass = "font-semibold text-cocoa mb-1.5 block";
+const labelClass = "font-semibold text-ink mb-1.5 block";
 
 const Booking = () => {
   const [selectedDate, setSelectedDate] = useState("");
@@ -112,7 +112,7 @@ const Booking = () => {
       </div>
 
       {isToday && (
-        <p className="text-sm bg-secondary rounded-xl px-4 py-3 text-cocoa">
+        <p className="text-sm bg-secondary rounded-xl px-4 py-3 text-ink">
           Booking for today? For the fastest reply,{" "}
           <a href={whatsappLink()} target="_blank" rel="noopener noreferrer" className="font-bold underline">WhatsApp</a>{" "}
           or <a href={telLink} className="font-bold underline">call {PHONE.display}</a>.

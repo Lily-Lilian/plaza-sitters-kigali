@@ -22,18 +22,18 @@ const reviews = [
 
 const Testimonials = () => {
   return (
-    <section id="reviews" className="py-16 bg-cream scroll-mt-16">
+    <section id="reviews" className="py-16 bg-sky scroll-mt-16">
       <div className="container mx-auto px-4 sm:px-6">
-        <h2 className="text-3xl md:text-4xl font-bold text-cocoa text-center mb-10">
+        <h2 className="text-3xl md:text-4xl font-bold text-ink text-center mb-10">
           What parents say
         </h2>
         <div className="grid md:grid-cols-3 gap-6">
           {reviews.map((r) => (
             <figure key={r.name} className="bg-white rounded-2xl border border-border p-6">
               <Quote className="w-7 h-7 text-primary-light mb-3" />
-              <blockquote className="text-cocoa leading-relaxed mb-4">"{r.text}"</blockquote>
+              <blockquote className="text-ink leading-relaxed mb-4">"{r.text}"</blockquote>
               <figcaption className="text-sm">
-                <span className="font-bold text-cocoa">{r.name}</span>
+                <span className="font-bold text-ink">{r.name}</span>
                 <span className="text-muted-foreground"> · {r.area}</span>
               </figcaption>
             </figure>

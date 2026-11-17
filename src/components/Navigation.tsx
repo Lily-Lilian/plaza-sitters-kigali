@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Menu, MessageCircle, X } from "lucide-react";
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import logo from "@/assets/logo-sm.png";
+import logo from "@/assets/logo-mark.png";
 import { BRAND, whatsappLink } from "@/lib/site";
 
 const menuItems = [
@@ -34,8 +34,8 @@ const Navigation = () => {
       <div className="container mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between h-16">
           <Link to="/" className="flex items-center gap-2">
-            <img src={logo} alt="" className="w-11 h-11 rounded-full" />
-            <span className="text-lg font-display font-semibold text-cocoa leading-tight">
+            <img src={logo} alt="" className="w-11 h-11 object-contain" />
+            <span className="text-lg font-display font-semibold text-ink leading-tight">
               {BRAND.name}
             </span>
           </Link>
