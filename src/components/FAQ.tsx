@@ -16,7 +16,7 @@ const faqs = [
   },
   {
     q: "How do I pay?",
-    a: `Once we confirm your sitter, send half of the price by MoMo to ${PAYMENT.momoNumber}. Pay the rest at the end of the sitting, by cash or MoMo. School runs and Meet & Greet are paid in full when you book. Cancel 12 hours or more before and we send your deposit back.`,
+    a: `Once we confirm your sitter, send half of the price by MoMo to ${PAYMENT.momoNumber}. Pay the rest at the end of the sitting, by cash or MoMo. The Meet & Greet is paid in full when you book. Cancel 12 hours or more before and we send your deposit back.`,
   },
   {
     q: "Can I book for the same day?",

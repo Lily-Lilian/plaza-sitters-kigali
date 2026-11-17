@@ -4,7 +4,6 @@ import {
   EVENING_SHIFT,
   EXTRAS,
   FAMILY_PROVIDES,
-  FLAT_RATES,
   MORE_SERVICES,
   PAYMENT,
   rwf,
@@ -104,31 +103,16 @@ const Pricing = () => {
           ))}
         </div>
 
-        <div className="grid md:grid-cols-2 gap-4 mt-4">
-          <div className="bg-white rounded-2xl border border-border p-5">
-            <h4 className="font-bold text-ink mb-3">School runs</h4>
-            <ul className="space-y-2 text-sm">
-              {FLAT_RATES.map((r) => (
-                <li key={r.id} className="flex justify-between gap-4">
-                  <span className="text-ink">
-                    {r.name} <span className="text-muted-foreground">({r.when})</span>
-                  </span>
-                  <span className="font-bold text-ink whitespace-nowrap">{rwf(r.price)}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="bg-white rounded-2xl border border-border p-5">
-            <h4 className="font-bold text-ink mb-3">Good to know</h4>
-            <ul className="space-y-2 text-sm">
-              {EXTRAS.map((e) => (
-                <li key={e.label} className="flex justify-between gap-4">
-                  <span className="text-muted-foreground">{e.label}</span>
-                  <span className="font-semibold text-ink text-right">{e.price}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
+        <div className="bg-white rounded-2xl border border-border p-5 mt-4">
+          <h4 className="font-bold text-ink mb-3">Good to know</h4>
+          <ul className="space-y-2 text-sm">
+            {EXTRAS.map((e) => (
+              <li key={e.label} className="flex justify-between gap-4">
+                <span className="text-muted-foreground">{e.label}</span>
+                <span className="font-semibold text-ink text-right">{e.price}</span>
+              </li>
+            ))}
+          </ul>
         </div>
         <p className="text-center text-sm text-muted-foreground mt-4">
           Every package adjusts to your child's age and routine. We confirm the price on WhatsApp
@@ -170,7 +154,7 @@ const Pricing = () => {
               <li>
                 <span className="font-semibold text-ink">The rest at the end,</span> by cash or MoMo.
               </li>
-              <li>School runs and Meet & Greet are paid in full when you book.</li>
+              <li>The Meet & Greet is paid in full when you book.</li>
               <li>
                 <span className="font-semibold text-ink">Free</span> to cancel 12 hours or more
                 before: we send your deposit back.

@@ -119,27 +119,7 @@ export const MORE_SERVICES: Package[] = [
   },
 ];
 
-// Short services, paid in full when you book.
-export const FLAT_RATES: Package[] = [
-  {
-    id: "morning-school",
-    name: "Morning routine + school drop-off",
-    price: 15000,
-    when: "6 – 8 AM",
-    tagline: "Wake-up, dressing, breakfast time and drop-off",
-    nominalHours: 2,
-  },
-  {
-    id: "school-trip",
-    name: "School pick-up or drop-off",
-    price: 8000,
-    when: "Per trip",
-    tagline: "Safely to or from school",
-    nominalHours: 1,
-  },
-];
-
-export const ALL_PACKAGES: Package[] = [DAY_SHIFT, EVENING_SHIFT, ...MORE_SERVICES, ...FLAT_RATES];
+export const ALL_PACKAGES: Package[] = [DAY_SHIFT, EVENING_SHIFT, ...MORE_SERVICES];
 
 // What the family has ready at home for the sitter to use.
 export const FAMILY_PROVIDES = [
@@ -149,7 +129,7 @@ export const FAMILY_PROVIDES = [
 ];
 
 export const EXTRAS = [
-  { label: "Transport home after 10 PM", price: "You cover a safe ride (moto or taxi)" },
+  { label: "Transport home after 10 PM", price: "You cover a safe ride (moto or any other ways)" },
   { label: "Meet & Greet before your first booking", price: "Sitter's transport only (about 5,000 RWF)" },
 ];
 

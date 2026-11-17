@@ -5,7 +5,6 @@ import { useBooking } from "@/hooks/use-booking";
 import { useToast } from "@/components/ui/use-toast";
 import {
   ALL_PACKAGES,
-  FLAT_RATES,
   PAYMENT,
   PHONE,
   depositFor,
@@ -46,7 +45,6 @@ const Booking = () => {
   const isToday = selectedDate === todayLocal();
   const chosen = ALL_PACKAGES.find((p) => p.id === packageId);
   const price = chosen?.price ?? 0;
-  const paidInFull = FLAT_RATES.some((p) => p.id === packageId);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -177,16 +175,8 @@ const Booking = () => {
       </div>
       {price > 0 && (
         <p className="text-sm text-muted-foreground -mt-2">
-          {paidInFull ? (
-            <>
-              Paid in full by MoMo to {PAYMENT.momoNumber} once we confirm your sitter.
-            </>
-          ) : (
-            <>
-              To confirm, send <span className="font-semibold text-ink">{rwf(depositFor(price))}</span> (half)
-              by MoMo to {PAYMENT.momoNumber} once we confirm your sitter. Pay the rest at the end.
-            </>
-          )}
+          To confirm, send <span className="font-semibold text-ink">{rwf(depositFor(price))}</span> (half)
+          by MoMo to {PAYMENT.momoNumber} once we confirm your sitter. Pay the rest at the end.
         </p>
       )}
 
