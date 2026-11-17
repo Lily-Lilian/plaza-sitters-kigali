@@ -129,7 +129,7 @@ export const FAMILY_PROVIDES = [
 ];
 
 export const EXTRAS = [
-  { label: "Transport home after 10 PM", price: "You cover a safe ride (moto or any other ways)" },
+  { label: "Transport home after 10 PM", price: "You cover a safe ride (moto or any other means)" },
   { label: "Meet & Greet before your first booking", price: "Sitter's transport only (about 5,000 RWF)" },
 ];
 

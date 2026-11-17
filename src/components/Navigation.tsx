@@ -9,7 +9,6 @@ const menuItems = [
   { label: "How it works", href: "#how-it-works" },
   { label: "Packages", href: "#prices" },
   { label: "Sitters", href: "#sitters" },
-  { label: "Reviews", href: "#reviews" },
   { label: "FAQ", href: "#faq" },
 ];
 
