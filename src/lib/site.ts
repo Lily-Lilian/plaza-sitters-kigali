@@ -121,6 +121,22 @@ export const MORE_SERVICES: Package[] = [
 
 export const ALL_PACKAGES: Package[] = [DAY_SHIFT, EVENING_SHIFT, ...MORE_SERVICES];
 
+// Children: packages cover up to 3 children; each extra child adds a flat fee.
+// Special Events are priced per sitter instead (up to 5 children each).
+export const CHILDREN = {
+  included: 3,
+  extraChildFee: 5000,
+  perSitterAtEvents: 5,
+};
+
+export const isEvent = (pkg: Package) => pkg.id === "events";
+
+export const extraChildren = (pkg: Package, kids: number) =>
+  isEvent(pkg) ? 0 : Math.max(0, kids - CHILDREN.included);
+
+export const priceFor = (pkg: Package, kids: number) =>
+  pkg.price + extraChildren(pkg, kids) * CHILDREN.extraChildFee;
+
 // What the family has ready at home for the sitter to use.
 export const FAMILY_PROVIDES = [
   "Food, snacks & milk",
@@ -129,6 +145,10 @@ export const FAMILY_PROVIDES = [
 ];
 
 export const EXTRAS = [
+  {
+    label: `More than ${CHILDREN.included} children`,
+    price: `+${rwf(CHILDREN.extraChildFee)} per extra child`,
+  },
   { label: "Transport home after 10 PM", price: "You cover a safe ride (moto or any other means)" },
   { label: "Meet & Greet before your first booking", price: "Sitter's transport only (about 5,000 RWF)" },
 ];

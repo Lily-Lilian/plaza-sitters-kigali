@@ -180,6 +180,23 @@
   }
 }
 
+/* Booking form date/time fields: hide the browser's picker icon (we show our
+   own on the left) but stretch it over the field so a tap anywhere opens it. */
+.booking-picker {
+  position: relative;
+}
+.booking-picker::-webkit-calendar-picker-indicator {
+  position: absolute;
+  inset: 0;
+  width: auto;
+  height: auto;
+  opacity: 0;
+  cursor: pointer;
+}
+.booking-picker::-webkit-date-and-time-value {
+  text-align: left;
+}
+
 /* Animation for blob effects */
 @layer utilities {
   @keyframes blob {
