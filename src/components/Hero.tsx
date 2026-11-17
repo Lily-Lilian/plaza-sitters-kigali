@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { MessageCircle, Phone } from "lucide-react";
 import logo from "@/assets/logo-full.png";
-import { BRAND, PHONE, RATES, telLink, whatsappLink } from "@/lib/site";
+import { BRAND, EVENING_SHIFT, PHONE, rwf, telLink, whatsappLink } from "@/lib/site";
 
 const Hero = () => {
   return (
@@ -45,7 +45,7 @@ const Hero = () => {
             </div>
 
             <p className="text-sm text-muted-foreground">
-              From <span className="font-bold text-ink">{RATES.day.price}</span> · Meet your
+              Packages from <span className="font-bold text-ink">{rwf(EVENING_SHIFT.price)}</span> · Meet your
               sitter first: you only pay their transport
             </p>
           </div>

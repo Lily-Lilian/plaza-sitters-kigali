@@ -7,7 +7,7 @@ import { BRAND, whatsappLink } from "@/lib/site";
 
 const menuItems = [
   { label: "How it works", href: "#how-it-works" },
-  { label: "Prices", href: "#prices" },
+  { label: "Packages", href: "#prices" },
   { label: "Sitters", href: "#sitters" },
   { label: "Reviews", href: "#reviews" },
   { label: "FAQ", href: "#faq" },

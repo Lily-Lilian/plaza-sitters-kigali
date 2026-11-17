@@ -3,7 +3,16 @@ import { Loader2 } from "lucide-react";
 import { useState } from "react";
 import { useBooking } from "@/hooks/use-booking";
 import { useToast } from "@/components/ui/use-toast";
-import { PAYMENT, PHONE, RATES, depositFor, estimatePrice, telLink, whatsappLink } from "@/lib/site";
+import {
+  ALL_PACKAGES,
+  FLAT_RATES,
+  PAYMENT,
+  PHONE,
+  depositFor,
+  rwf,
+  telLink,
+  whatsappLink,
+} from "@/lib/site";
 
 const AREAS = [
   "Kimihurura", "Kacyiru", "Nyarutarama", "Gisozi", "Remera", "Kimisagara",
@@ -23,7 +32,7 @@ const labelClass = "font-semibold text-ink mb-1.5 block";
 const Booking = () => {
   const [selectedDate, setSelectedDate] = useState("");
   const [selectedTime, setSelectedTime] = useState("");
-  const [duration, setDuration] = useState("");
+  const [packageId, setPackageId] = useState("");
   const [numKids, setNumKids] = useState("");
   const [location, setLocation] = useState("");
   const [specialNotes, setSpecialNotes] = useState("");
@@ -35,12 +44,14 @@ const Booking = () => {
   const { toast } = useToast();
 
   const isToday = selectedDate === todayLocal();
-  const price = estimatePrice(selectedTime, parseInt(duration) || 0, parseInt(numKids) || 0);
+  const chosen = ALL_PACKAGES.find((p) => p.id === packageId);
+  const price = chosen?.price ?? 0;
+  const paidInFull = FLAT_RATES.some((p) => p.id === packageId);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!parentName || !parentPhone || !selectedDate || !selectedTime || !duration || !numKids || !location) {
+    if (!parentName || !parentPhone || !selectedDate || !selectedTime || !chosen || !numKids || !location) {
       toast({
         title: "Missing information",
         description: "Please fill in all required fields",
@@ -57,10 +68,10 @@ const Booking = () => {
       parent_email: parentEmail || undefined,
       date: selectedDate,
       time: selectedTime,
-      duration: parseInt(duration),
+      duration: chosen.nominalHours,
       num_kids: parseInt(numKids),
       location,
-      special_notes: specialNotes || undefined,
+      special_notes: [`Package: ${chosen.name}`, specialNotes].filter(Boolean).join("\n"),
       urgency: isToday ? "emergency" : "normal",
       total_price: price,
     });
@@ -71,7 +82,7 @@ const Booking = () => {
       setParentEmail("");
       setSelectedDate("");
       setSelectedTime("");
-      setDuration("");
+      setPackageId("");
       setNumKids("");
       setLocation("");
       setSpecialNotes("");
@@ -92,13 +103,14 @@ const Booking = () => {
             onChange={(e) => setSelectedTime(e.target.value)} className={inputClass} />
         </div>
         <div>
-          <label htmlFor="hours" className={labelClass}>Hours *</label>
-          <select id="hours" value={duration} onChange={(e) => setDuration(e.target.value)} className={inputClass}>
+          <label htmlFor="package" className={labelClass}>Package *</label>
+          <select id="package" value={packageId} onChange={(e) => setPackageId(e.target.value)} className={inputClass}>
             <option value="">Select</option>
-            {[3, 4, 5, 6, 8, 10, 12].map((h) => (
-              <option key={h} value={h}>{h} hours{h === RATES.minimumHours ? " (minimum)" : ""}</option>
+            {ALL_PACKAGES.map((p) => (
+              <option key={p.id} value={p.id}>{p.name} · {rwf(p.price)}</option>
             ))}
           </select>
+          {chosen && <p className="text-xs text-muted-foreground mt-1">{chosen.when}</p>}
         </div>
         <div>
           <label htmlFor="kids" className={labelClass}>Children *</label>
@@ -160,13 +172,21 @@ const Booking = () => {
       </div>
 
       <div className="flex items-baseline justify-between border-t border-border pt-4">
-        <span className="text-muted-foreground">Estimated price</span>
-        <span className="text-2xl font-bold text-primary">{price ? `${price.toLocaleString()} RWF` : "–"}</span>
+        <span className="text-muted-foreground">Price</span>
+        <span className="text-2xl font-bold text-primary">{price ? rwf(price) : "–"}</span>
       </div>
       {price > 0 && (
         <p className="text-sm text-muted-foreground -mt-2">
-          To confirm, send <span className="font-semibold text-ink">{depositFor(price).toLocaleString()} RWF</span> (half)
-          by MoMo to {PAYMENT.momoNumber} once we confirm your sitter. Pay the rest at the end.
+          {paidInFull ? (
+            <>
+              Paid in full by MoMo to {PAYMENT.momoNumber} once we confirm your sitter.
+            </>
+          ) : (
+            <>
+              To confirm, send <span className="font-semibold text-ink">{rwf(depositFor(price))}</span> (half)
+              by MoMo to {PAYMENT.momoNumber} once we confirm your sitter. Pay the rest at the end.
+            </>
+          )}
         </p>
       )}
 
@@ -182,7 +202,7 @@ const Booking = () => {
         )}
       </Button>
       <p className="text-sm text-muted-foreground text-center">
-        We'll reply on WhatsApp with your sitter's profile and the final price.
+        We'll reply on WhatsApp with your sitter's profile.
       </p>
     </form>
   );

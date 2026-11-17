@@ -39,46 +39,118 @@ export const PAYMENT = {
 
 export const depositFor = (total: number) => Math.round((total * PAYMENT.depositPercent) / 100);
 
-export const RATES = {
-  day: { label: "Daytime", hours: "6 AM – 6 PM", price: "3,000 RWF / hour", perHour: 3000 },
-  evening: { label: "Evening", hours: "6 PM – midnight", price: "4,000 RWF / hour", perHour: 4000 },
-  minimumHours: 3,
-  extraChildPerHour: 2000,
-  afterMidnight: 5000,
+export type Package = {
+  id: string;
+  name: string;
+  price: number;
+  when: string;
+  tagline: string;
+  // Used only to fill the booking record's duration (hours) field.
+  nominalHours: number;
 };
 
-// Estimate used by the online booking form. Matches the published price table.
-export const estimatePrice = (startTime: string, hours: number, kids: number) => {
-  if (!startTime || !hours || !kids) return 0;
-  const startHour = parseInt(startTime.split(":")[0]);
-  let total = 0;
-  let crossesMidnight = false;
-  for (let i = 0; i < hours; i++) {
-    const h = (startHour + i) % 24;
-    const isDay = h >= 6 && h < 18;
-    if (h < 6) crossesMidnight = true;
-    total += (isDay ? RATES.day.perHour : RATES.evening.perHour) + (kids - 1) * RATES.extraChildPerHour;
-  }
-  return total + (crossesMidnight ? RATES.afterMidnight : 0);
+export const rwf = (n: number) => `${n.toLocaleString("en-US")} RWF`;
+
+// The two main packages, with what the sitter does in each.
+export const DAY_SHIFT: Package & { includes: string[] } = {
+  id: "day",
+  name: "Day Shift",
+  price: 20000,
+  when: "Any time during the day, until 5 PM",
+  tagline: "A full day of care, learning & fun",
+  nominalHours: 9,
+  includes: [
+    "Morning routine: washing & dressing",
+    "Feeding meals or snacks provided by the family",
+    "Reading, puzzles & learning games",
+    "Arts, crafts & colouring",
+    "Safe outdoor play",
+    "Nap time supervision",
+    "Homework help",
+    "Hygiene & diaper changes",
+    "Updates for parents during the day",
+  ],
 };
+
+export const EVENING_SHIFT: Package & { includes: string[] } = {
+  id: "evening",
+  name: "Evening Shift",
+  price: 20000,
+  when: "5 PM – 10 PM",
+  tagline: "A calm, cozy evening ready for bed",
+  nominalHours: 5,
+  includes: [
+    "Feeding meals or snacks provided by the family",
+    "Relaxed play",
+    "Homework & revision",
+    "Bath time & pyjamas",
+    "Brushing teeth & hygiene",
+    "Storytime & calm games",
+    "Following your bedtime routine",
+    "Settled to sleep & checked on",
+    "Tidy space before you return",
+  ],
+};
+
+export const MORE_SERVICES: Package[] = [
+  {
+    id: "overnight",
+    name: "Overnight",
+    price: 25000,
+    when: "From the evening until the next morning",
+    tagline: "Bedtime, night care & morning wake-up",
+    nominalHours: 14,
+  },
+  {
+    id: "events",
+    name: "Special Events",
+    price: 50000,
+    when: "For the length of your event",
+    tagline: "Weddings, parties & gatherings",
+    nominalHours: 10,
+  },
+  {
+    id: "travel",
+    name: "Travel & Tour",
+    price: 50000,
+    when: "We agree the trip details with you",
+    tagline: "A babysitter who travels with you",
+    nominalHours: 10,
+  },
+];
+
+// Short services, paid in full when you book.
+export const FLAT_RATES: Package[] = [
+  {
+    id: "morning-school",
+    name: "Morning routine + school drop-off",
+    price: 15000,
+    when: "6 – 8 AM",
+    tagline: "Wake-up, dressing, breakfast time and drop-off",
+    nominalHours: 2,
+  },
+  {
+    id: "school-trip",
+    name: "School pick-up or drop-off",
+    price: 8000,
+    when: "Per trip",
+    tagline: "Safely to or from school",
+    nominalHours: 1,
+  },
+];
+
+export const ALL_PACKAGES: Package[] = [DAY_SHIFT, EVENING_SHIFT, ...MORE_SERVICES, ...FLAT_RATES];
+
+// What the family has ready at home for the sitter to use.
+export const FAMILY_PROVIDES = [
+  "Food, snacks & milk",
+  "Diapers & wipes",
+  "Any medicine, with written instructions",
+];
 
 export const EXTRAS = [
-  { label: "Each extra child", price: "+2,000 RWF / hour" },
-  { label: "After midnight", price: "+5,000 RWF flat" },
   { label: "Transport home after 10 PM", price: "You cover a safe ride (moto or taxi)" },
   { label: "Meet & Greet before your first booking", price: "Sitter's transport only (about 5,000 RWF)" },
-];
-
-// Flat-rate services that don't follow the 3-hour minimum.
-export const FLAT_RATES = [
-  { label: "Morning routine + school drop-off (6 – 8 AM)", price: "15,000 RWF" },
-  { label: "School pick-up or drop-off", price: "8,000 RWF per trip" },
-];
-
-export const EXAMPLES = [
-  { situation: "Wedding, 12 PM – 10 PM", detail: "Lunch, nap, dinner and bedtime", price: "34,000 RWF" },
-  { situation: "Dinner out, 6 PM – 11 PM", detail: "Dinner, bath, stories, bed", price: "20,000 RWF" },
-  { situation: "Working from home, 4 hours", detail: "Kids busy while you take calls", price: "12,000 RWF" },
 ];
 
 export type Sitter = {

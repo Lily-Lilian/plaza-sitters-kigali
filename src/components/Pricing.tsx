@@ -1,8 +1,17 @@
-import { Check, X } from "lucide-react";
-import { EXAMPLES, EXTRAS, FLAT_RATES, PAYMENT, RATES } from "@/lib/site";
+import { Check, Home, Moon, Sun, X } from "lucide-react";
+import {
+  DAY_SHIFT,
+  EVENING_SHIFT,
+  EXTRAS,
+  FAMILY_PROVIDES,
+  FLAT_RATES,
+  MORE_SERVICES,
+  PAYMENT,
+  rwf,
+} from "@/lib/site";
 
 const willDo = [
-  "Feed the kids and cook simple meals for them",
+  "Feeding meals or snacks provided by the family",
   "Bath time, stories and bedtime, following your routine",
   "Play, homework help and screen time you approve",
   "Tidy up after the kids (toys, their dishes)",
@@ -15,41 +24,102 @@ const wontDo = [
   "Give medicine unless you ask in writing",
 ];
 
+const serviceColours = ["text-primary", "text-coral", "text-leaf"];
+
 const Pricing = () => {
   return (
     <section id="prices" className="py-16 bg-sky scroll-mt-16">
       <div className="container mx-auto px-4 sm:px-6 max-w-5xl">
-        <h2 className="text-3xl md:text-4xl font-bold text-ink text-center mb-3">Prices</h2>
+        <h2 className="text-3xl md:text-4xl font-bold text-ink text-center mb-3">Our packages</h2>
         <p className="text-center text-muted-foreground mb-10">
-          Minimum {RATES.minimumHours} hours. Pay half by MoMo to confirm, the rest at the end. No
-          hidden fees.
+          One price per shift. Pay half by MoMo to confirm, the rest at the end. No hidden fees.
         </p>
 
-        <div className="grid md:grid-cols-2 gap-6 mb-6">
-          {/* Hourly rates + extras */}
-          <div className="bg-white rounded-2xl border border-border p-6">
-            <table className="w-full text-left">
-              <tbody className="divide-y divide-border">
-                {[RATES.day, RATES.evening].map((r) => (
-                  <tr key={r.label}>
-                    <th scope="row" className="py-3 pr-4 font-normal">
-                      <span className="block font-bold text-ink">{r.label}</span>
-                      <span className="text-sm text-muted-foreground">{r.hours}</span>
-                    </th>
-                    <td className="py-3 text-right text-lg font-bold text-primary whitespace-nowrap">
-                      {r.price}
-                    </td>
-                  </tr>
-                ))}
-                {FLAT_RATES.map((r) => (
-                  <tr key={r.label}>
-                    <th scope="row" className="py-3 pr-4 font-normal text-ink">{r.label}</th>
-                    <td className="py-3 text-right font-bold text-ink whitespace-nowrap">{r.price}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-            <h3 className="font-bold text-ink mt-6 mb-2">Extras</h3>
+        {/* Main packages */}
+        <div className="grid md:grid-cols-2 gap-6">
+          <div className="rounded-2xl border-2 border-sunshine bg-sunshine/20 p-6 sm:p-8">
+            <h3 className="flex items-center gap-2 text-2xl font-bold text-ink">
+              <Sun className="w-7 h-7 text-coral" aria-hidden />
+              {DAY_SHIFT.name}
+            </h3>
+            <p className="mt-3 text-4xl font-bold text-coral">{rwf(DAY_SHIFT.price)}</p>
+            <p className="mt-1 text-sm font-semibold text-ink">{DAY_SHIFT.when}</p>
+            <p className="mt-1 text-ink/80">{DAY_SHIFT.tagline}</p>
+            <ul className="mt-5 pt-5 border-t border-sunshine space-y-2">
+              {DAY_SHIFT.includes.map((t) => (
+                <li key={t} className="flex gap-2 text-ink">
+                  <Check className="w-5 h-5 text-coral mt-0.5 flex-shrink-0" aria-hidden />
+                  <span>{t}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="rounded-2xl bg-primary p-6 sm:p-8 text-white">
+            <h3 className="flex items-center gap-2 text-2xl font-bold">
+              <Moon className="w-7 h-7 text-sunshine" aria-hidden />
+              {EVENING_SHIFT.name}
+            </h3>
+            <p className="mt-3 text-4xl font-bold text-sunshine">{rwf(EVENING_SHIFT.price)}</p>
+            <p className="mt-1 text-sm font-semibold">{EVENING_SHIFT.when}</p>
+            <p className="mt-1 text-white/85">{EVENING_SHIFT.tagline}</p>
+            <ul className="mt-5 pt-5 border-t border-white/25 space-y-2">
+              {EVENING_SHIFT.includes.map((t) => (
+                <li key={t} className="flex gap-2">
+                  <Check className="w-5 h-5 text-sunshine mt-0.5 flex-shrink-0" aria-hidden />
+                  <span>{t}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        {/* What the family provides */}
+        <div className="mt-6 rounded-2xl bg-white border border-border p-5 flex flex-col sm:flex-row sm:items-center gap-3">
+          <p className="flex items-center gap-2 font-bold text-ink whitespace-nowrap">
+            <Home className="w-5 h-5 text-primary" aria-hidden />
+            The family provides:
+          </p>
+          <ul className="flex flex-wrap gap-2">
+            {FAMILY_PROVIDES.map((t) => (
+              <li key={t} className="rounded-full bg-secondary px-3 py-1 text-sm text-ink">
+                {t}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* More services */}
+        <h3 className="text-2xl font-bold text-ink text-center mt-12 mb-6">More services</h3>
+        <div className="grid sm:grid-cols-3 gap-4">
+          {MORE_SERVICES.map((s, i) => (
+            <div key={s.id} className="bg-white rounded-2xl border border-border p-5 text-center">
+              <p className="font-bold text-ink">{s.name}</p>
+              <p className={`mt-1 text-2xl font-bold ${serviceColours[i % serviceColours.length]}`}>
+                {rwf(s.price)}
+              </p>
+              <p className="mt-1 text-sm text-muted-foreground">{s.tagline}</p>
+              <p className="mt-1 text-xs text-muted-foreground">{s.when}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-4 mt-4">
+          <div className="bg-white rounded-2xl border border-border p-5">
+            <h4 className="font-bold text-ink mb-3">School runs</h4>
+            <ul className="space-y-2 text-sm">
+              {FLAT_RATES.map((r) => (
+                <li key={r.id} className="flex justify-between gap-4">
+                  <span className="text-ink">
+                    {r.name} <span className="text-muted-foreground">({r.when})</span>
+                  </span>
+                  <span className="font-bold text-ink whitespace-nowrap">{rwf(r.price)}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="bg-white rounded-2xl border border-border p-5">
+            <h4 className="font-bold text-ink mb-3">Good to know</h4>
             <ul className="space-y-2 text-sm">
               {EXTRAS.map((e) => (
                 <li key={e.label} className="flex justify-between gap-4">
@@ -59,29 +129,14 @@ const Pricing = () => {
               ))}
             </ul>
           </div>
-
-          {/* Worked examples */}
-          <div className="bg-white rounded-2xl border border-border p-6">
-            <h3 className="font-bold text-ink mb-4">What that looks like</h3>
-            <ul className="space-y-4">
-              {EXAMPLES.map((ex) => (
-                <li key={ex.situation} className="flex justify-between gap-4 items-start">
-                  <div>
-                    <p className="font-semibold text-ink">{ex.situation}</p>
-                    <p className="text-sm text-muted-foreground">{ex.detail}</p>
-                  </div>
-                  <span className="font-bold text-primary whitespace-nowrap">{ex.price}</span>
-                </li>
-              ))}
-            </ul>
-            <p className="text-xs text-muted-foreground mt-6">
-              Examples are for one child. We confirm the exact price on WhatsApp before you book.
-            </p>
-          </div>
         </div>
+        <p className="text-center text-sm text-muted-foreground mt-4">
+          Every package adjusts to your child's age and routine. We confirm the price on WhatsApp
+          before you book.
+        </p>
 
         {/* What sitters do + policy */}
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-3 gap-6 mt-12">
           <div className="bg-white rounded-2xl border border-border p-6">
             <h3 className="font-bold text-ink mb-3">Sitters will</h3>
             <ul className="space-y-2 text-sm">
@@ -113,12 +168,9 @@ const Pricing = () => {
                 <span className="font-semibold text-ink">{PAYMENT.momoNumber}</span>.
               </li>
               <li>
-                <span className="font-semibold text-ink">The rest at the end,</span> plus any extra
-                time, by cash or MoMo.
+                <span className="font-semibold text-ink">The rest at the end,</span> by cash or MoMo.
               </li>
-              <li>
-                School runs, the morning routine and Meet & Greet are paid in full when you book.
-              </li>
+              <li>School runs and Meet & Greet are paid in full when you book.</li>
               <li>
                 <span className="font-semibold text-ink">Free</span> to cancel 12 hours or more
                 before: we send your deposit back.
