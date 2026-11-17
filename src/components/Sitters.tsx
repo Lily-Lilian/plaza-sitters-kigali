@@ -1,17 +1,13 @@
 import { Baby, Clock, Languages } from "lucide-react";
-import { BRAND, SITTERS } from "@/lib/site";
+import { SITTERS } from "@/lib/site";
 
 const Sitters = () => {
   return (
     <section id="sitters" className="py-16 bg-white scroll-mt-16">
       <div className="container mx-auto px-4 sm:px-6">
-        <h2 className="text-3xl md:text-4xl font-bold text-ink text-center mb-3">
+        <h2 className="text-3xl md:text-4xl font-bold text-ink text-center mb-10">
           Meet some of our sitters
         </h2>
-        <p className="text-center text-muted-foreground max-w-2xl mx-auto mb-10">
-          {BRAND.founder}, our founder and a mother of three, interviews every sitter in person.
-          We remove any sitter who doesn't meet our standards.
-        </p>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {SITTERS.map((s) => (
