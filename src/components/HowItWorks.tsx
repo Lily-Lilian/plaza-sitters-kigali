@@ -4,7 +4,7 @@ const steps = [
   {
     icon: MessageCircle,
     title: "WhatsApp us",
-    text: "Tell us the date, the time, and how many children (and their ages). We reply with a sitter who fits.",
+    text: "Tell us the date, the time, and how many children (and their ages). We reply with a sitter who fits. Pay half by MoMo to confirm.",
   },
   {
     icon: UserCheck,
@@ -14,7 +14,7 @@ const steps = [
   {
     icon: Camera,
     title: "Relax",
-    text: "Your sitter sends a check-in selfie with the kids on arrival, plus updates during the sitting. Pay at the end by cash or MoMo.",
+    text: "Your sitter sends a check-in selfie with the kids on arrival, plus updates during the sitting. Pay the rest at the end by cash or MoMo.",
   },
 ];
 

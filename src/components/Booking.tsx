@@ -3,7 +3,7 @@ import { Loader2 } from "lucide-react";
 import { useState } from "react";
 import { useBooking } from "@/hooks/use-booking";
 import { useToast } from "@/components/ui/use-toast";
-import { PHONE, RATES, estimatePrice, telLink, whatsappLink } from "@/lib/site";
+import { PAYMENT, PHONE, RATES, depositFor, estimatePrice, telLink, whatsappLink } from "@/lib/site";
 
 const AREAS = [
   "Kimihurura", "Kacyiru", "Nyarutarama", "Gisozi", "Remera", "Kimisagara",
@@ -163,6 +163,12 @@ const Booking = () => {
         <span className="text-muted-foreground">Estimated price</span>
         <span className="text-2xl font-bold text-primary">{price ? `${price.toLocaleString()} RWF` : "–"}</span>
       </div>
+      {price > 0 && (
+        <p className="text-sm text-muted-foreground -mt-2">
+          To confirm, send <span className="font-semibold text-ink">{depositFor(price).toLocaleString()} RWF</span> (half)
+          by MoMo to {PAYMENT.momoNumber} once we confirm your sitter. Pay the rest at the end.
+        </p>
+      )}
 
       <Button type="submit" disabled={isLoading}
         className="w-full py-6 rounded-full text-lg font-bold disabled:opacity-50">

@@ -1,6 +1,6 @@
 import { supabase } from '../supabase';
 import { format } from 'date-fns';
-import { PHONE, WHATSAPP } from '../site';
+import { PAYMENT, PHONE, WHATSAPP, depositFor } from '../site';
 
 interface BookingDetails {
   id: string;
@@ -38,6 +38,7 @@ export const notificationsApi = {
       `📍 ${booking.location}\n` +
       `👶 ${booking.num_kids} kid(s)\n` +
       `💵 RWF ${booking.total_price.toLocaleString()}\n\n` +
+      `To confirm, send RWF ${depositFor(booking.total_price).toLocaleString()} (half) by MoMo to ${PAYMENT.momoNumber}. Pay the rest at the end.\n\n` +
       `A sitter will be assigned soon. Thank you for choosing Kigali Little Angels!`;
 
     // Email HTML
@@ -98,6 +99,7 @@ export const notificationsApi = {
               
               <p><strong>What's Next?</strong></p>
               <ul>
+                <li>To confirm, send <strong>RWF ${depositFor(booking.total_price).toLocaleString()}</strong> (half) by MoMo to <strong>${PAYMENT.momoNumber}</strong>. Pay the rest at the end of the sitting.</li>
                 <li>We'll assign a qualified sitter to your booking</li>
                 <li>You'll receive the sitter's details before your booking</li>
                 <li>The sitter will arrive 10 minutes early</li>

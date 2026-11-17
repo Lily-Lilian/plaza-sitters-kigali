@@ -1,3 +1,4 @@
+import { PAYMENT } from "@/lib/site";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 const faqs = [
@@ -12,6 +13,10 @@ const faqs = [
   {
     q: "Which areas do you cover?",
     a: "All of Kigali. Tell us your neighbourhood when you message and we'll send a sitter who lives nearby.",
+  },
+  {
+    q: "How do I pay?",
+    a: `Once we confirm your sitter, send half of the price by MoMo to ${PAYMENT.momoNumber}. Pay the rest at the end of the sitting, plus any extra time, by cash or MoMo. School runs, the morning routine and Meet & Greet are paid in full when you book. Cancel 12 hours or more before and we send your deposit back.`,
   },
   {
     q: "Can I book for the same day?",

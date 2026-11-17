@@ -30,6 +30,15 @@ export const whatsappLink = (message = "Hi! I'd like to book a sitter.") =>
 
 export const telLink = `tel:${PHONE.international}`;
 
+// Payment: half by MoMo to confirm, the rest at the end.
+// MoMo goes to the same number as phone calls.
+export const PAYMENT = {
+  momoNumber: PHONE.display,
+  depositPercent: 50,
+};
+
+export const depositFor = (total: number) => Math.round((total * PAYMENT.depositPercent) / 100);
+
 export const RATES = {
   day: { label: "Daytime", hours: "6 AM – 6 PM", price: "3,000 RWF / hour", perHour: 3000 },
   evening: { label: "Evening", hours: "6 PM – midnight", price: "4,000 RWF / hour", perHour: 4000 },

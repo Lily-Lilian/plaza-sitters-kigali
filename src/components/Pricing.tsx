@@ -1,5 +1,5 @@
 import { Check, X } from "lucide-react";
-import { EXAMPLES, EXTRAS, FLAT_RATES, RATES } from "@/lib/site";
+import { EXAMPLES, EXTRAS, FLAT_RATES, PAYMENT, RATES } from "@/lib/site";
 
 const willDo = [
   "Feed the kids and cook simple meals for them",
@@ -21,7 +21,7 @@ const Pricing = () => {
       <div className="container mx-auto px-4 sm:px-6 max-w-5xl">
         <h2 className="text-3xl md:text-4xl font-bold text-ink text-center mb-3">Prices</h2>
         <p className="text-center text-muted-foreground mb-10">
-          Minimum {RATES.minimumHours} hours. Pay the sitter at the end, by cash or MoMo. No
+          Minimum {RATES.minimumHours} hours. Pay half by MoMo to confirm, the rest at the end. No
           hidden fees.
         </p>
 
@@ -105,15 +105,28 @@ const Pricing = () => {
             </ul>
           </div>
           <div className="bg-white rounded-2xl border border-border p-6">
-            <h3 className="font-bold text-ink mb-3">Cancelling & replacements</h3>
+            <h3 className="font-bold text-ink mb-3">Paying & cancelling</h3>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li>
-                <span className="font-semibold text-ink">Free</span> if you cancel 12 hours or
-                more before.
+                <span className="font-semibold text-ink">Half to confirm:</span> once we confirm your
+                sitter, send 50% by MoMo to{" "}
+                <span className="font-semibold text-ink">{PAYMENT.momoNumber}</span>.
               </li>
               <li>
-                <span className="font-semibold text-ink">5,000 RWF</span> if you cancel later, to
-                cover the sitter's time.
+                <span className="font-semibold text-ink">The rest at the end,</span> plus any extra
+                time, by cash or MoMo.
+              </li>
+              <li>
+                School runs, the morning routine and Meet & Greet are paid in full when you book.
+              </li>
+              <li>
+                <span className="font-semibold text-ink">Free</span> to cancel 12 hours or more
+                before: we send your deposit back.
+              </li>
+              <li>
+                Cancel later and we keep up to{" "}
+                <span className="font-semibold text-ink">5,000 RWF</span> of your deposit to cover
+                the sitter's time, and send back the rest.
               </li>
               <li>
                 If your sitter can't make it, we send a replacement who has passed the same checks,
