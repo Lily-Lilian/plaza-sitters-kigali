@@ -131,7 +131,7 @@ const FirstTimeGuide = () => {
 
           <div className="text-center">
             <p className="text-muted-foreground mb-4">
-              Tip: for the first time, book just 3 hours, or meet your sitter first for 5,000 RWF.
+              Tip: for the first time, book just 3 hours, or meet your sitter first. You only pay their transport, about 5,000 RWF.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Link to="/book-now">

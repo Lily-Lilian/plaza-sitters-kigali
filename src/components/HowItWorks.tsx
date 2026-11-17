@@ -9,7 +9,7 @@ const steps = [
   {
     icon: UserCheck,
     title: "Meet your sitter",
-    text: "We send you your sitter's profile. Nervous about the first time? Book a 30-minute Meet & Greet at your home for 5,000 RWF.",
+    text: "We send you your sitter's profile. Nervous about the first time? Book a 30-minute Meet & Greet at your home. You only pay the sitter's transport, about 5,000 RWF depending on where you live.",
   },
   {
     icon: Camera,

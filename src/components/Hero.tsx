@@ -46,7 +46,7 @@ const Hero = () => {
 
             <p className="text-sm text-muted-foreground">
               From <span className="font-bold text-ink">{RATES.day.price}</span> · Meet your
-              sitter first for 5,000 RWF
+              sitter first: you only pay their transport
             </p>
           </div>
 

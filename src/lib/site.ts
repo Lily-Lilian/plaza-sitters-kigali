@@ -57,7 +57,7 @@ export const EXTRAS = [
   { label: "Each extra child", price: "+2,000 RWF / hour" },
   { label: "After midnight", price: "+5,000 RWF flat" },
   { label: "Transport home after 10 PM", price: "You cover a safe ride (moto or taxi)" },
-  { label: "Meet & Greet before your first booking", price: "5,000 RWF" },
+  { label: "Meet & Greet before your first booking", price: "Sitter's transport only (about 5,000 RWF)" },
 ];
 
 // Flat-rate services that don't follow the 3-hour minimum.
